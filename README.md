@@ -68,97 +68,101 @@ This lab demonstrates how an attacker can enumerate services, exploit an exposed
 
 ## Project screenshots
 
+> Note: image paths below use `screenshot/<filename>.png` to match the repository folder name exactly.
+
 ### Environment and access
-![Administrator user menu](screenshots/admin_user_menu.png)  
-Shows the administrative user context menu in the lab environment.
 
-![Linux login screen (osboxes)](screenshots/osboxes_login.png)  
-Login prompt for the utility Linux VM used during the exercise.
+Shows the administrative user context menu in the lab environment.  
+![Administrator user menu](screenshot/admin_user_menu.png)
 
-![Windows login prompt](screenshots/windows_login_screen.png)  
-Victim host interactive login screen. Useful to correlate interactive sessions with timeline events.
+Login prompt for the utility Linux VM used during the exercise.  
+![Linux login screen (osboxes)](screenshot/osboxes_login.png)
 
-![Windows system information](screenshots/windows_system_info.png)  
-Snapshot of system settings and product activation details used for baseline documentation.
+Victim host interactive login screen. Useful to correlate interactive sessions with timeline events.  
+![Windows login prompt](screenshot/windows_login_screen.png)
+
+Snapshot of system settings and product activation details used for baseline documentation.  
+![Windows system information](screenshot/windows_system_info.png)
 
 ### Network discovery and exposure
-![Windows IP configuration output](screenshots/windows_ipconfig_output.png)  
-Target host IP address and interface details used for connectivity verification.
 
-![Kali IP configuration output](screenshots/kali_ifconfig_output.png)  
-Attacker host IP configuration used for routing and file transfer validation.
+Target host IP address and interface details used for connectivity verification.  
+![Windows IP configuration output](screenshot/windows_ipconfig_output.png)
 
-![Linux IP configuration output](screenshots/linux_ip_address.png)  
-Utility host interface details used during file handling and conversion steps.
+Attacker host IP configuration used for routing and file transfer validation.  
+![Kali IP configuration output](screenshot/kali_ifconfig_output.png)
 
-![Nmap MS17 010 vulnerability scan](screenshots/nmap_ms17_010_scan.png)  
-Shows a vulnerability script result indicating exposure of a legacy SMB weakness; demonstrates why patching and inventory are critical.
+Utility host interface details used during file handling and conversion steps.  
+![Linux IP configuration output](screenshot/linux_ip_address.png)
 
-![Nmap service scan result](screenshots/nmap_scan_result.png)  
-Service fingerprinting output used to build the attack surface map.
+Shows a vulnerability script result indicating exposure of a legacy SMB weakness; demonstrates why patching and inventory are critical.  
+![Nmap MS17 010 vulnerability scan](screenshot/nmap_ms17_010_scan.png)
+
+Service fingerprinting output used to build the attack surface map.  
+![Nmap service scan result](screenshot/nmap_scan_result.png)
 
 ### Compromise and session
-![Starting Metasploit console](screenshots/msfconsole_start.png)  
-Attacker framework start; in production such tool usage may trigger EDR detections.
 
-![MS17 010 exploit execution](screenshots/ms17_010_exploit_execution.png)  
-High level exploit output showing session creation in the lab. No commands are published here.
+Attacker framework start; in production such tool usage may trigger EDR detections.  
+![Starting Metasploit console](screenshot/msfconsole_start.png)
 
-![Meterpreter shell started](screenshots/meterpreter_shell_start.png)  
-Interactive session opened; defenders should monitor for unusual shell spawn and lateral movement attempts.
+High level exploit output showing session creation in the lab. (No exploit commands included).  
+![MS17 010 exploit execution](screenshot/ms17_010_exploit_execution.png)
 
-![Meterpreter shell with whoami](screenshots/meterpreter_shell_whoami.png)  
-Confirmation of privilege context observed by the attacker (SYSTEM in the lab scenario).
+Interactive session opened; defenders should monitor for unusual shell spawn and lateral movement attempts.  
+![Meterpreter shell started](screenshot/meterpreter_shell_start.png)
 
-![Meterpreter system information](screenshots/meterpreter_sysinfo.png)  
-Collected host metadata: OS version, architecture and domain details used to prioritise response.
+Confirmation of privilege context observed by the attacker (SYSTEM in the lab scenario).  
+![Meterpreter shell with whoami](screenshot/meterpreter_shell_whoami.png)
+
+Collected host metadata: OS version, architecture and domain details used to prioritise response.  
+![Meterpreter system information](screenshot/meterpreter_sysinfo.png)
 
 ### Host capture and evidence handling
-![Starting ETL trace capture](screenshots/netsh_trace_start.png)  
-Host side trace started to capture network activity for forensic analysis.
 
-![Checking ETL trace status](screenshots/netsh_trace_status.png)  
-Verification that host tracing is active and recording to the expected file.
+Host side trace started to capture network activity for forensic analysis.  
+![Starting ETL trace capture](screenshot/netsh_trace_start.png)
 
-![Netsh trace show status output](screenshots/netsh_trace_show_status.png)  
-Provider and level information indicating what subsystems were traced.
+Verification that host tracing is active and recording to the expected file.  
+![Checking ETL trace status](screenshot/netsh_trace_status.png)
 
-![Stopping ETL trace capture](screenshots/netsh_trace_stop.png)  
-Trace session stopped and ETL file persisted to disk.
+Provider and level information indicating what subsystems were traced.  
+![Netsh trace show status output](screenshot/netsh_trace_show_status.png)
 
-![Windows temp directory listing](screenshots/windows_temp_directory.png)  
-Temporary files observed on the victim prior to cleanup; monitor temp locations for staging.
+Trace session stopped and ETL file persisted to disk.  
+![Stopping ETL trace capture](screenshot/netsh_trace_stop.png)
 
-![Meterpreter cleanup commands](screenshots/meterpreter_cleanup_commands.png)  
-Example of attacker cleanup activity. Alerts for bulk deletions and unusual cleanup scripts can indicate tampering.
+Temporary files observed on the victim prior to cleanup; monitor temp locations for staging.  
+![Windows temp directory listing](screenshot/windows_temp_directory.png)
+
+Example of attacker cleanup activity. Alerts for bulk deletions and unusual cleanup scripts can indicate tampering.  
+![Meterpreter cleanup commands](screenshot/meterpreter_cleanup_commands.png)
 
 ### Trace conversion and network analysis
-![Kali file manager with ETL file](screenshots/kali_file_manager.png)  
-ETL file transferred to the analysis host and visible in the file manager.
 
-![Downloading ETL file via Meterpreter](screenshots/meterpreter_file_download.png)  
-Interaction showing retrieval of the ETL from the victim to the analyst host.
+ETL file transferred to the analysis host and visible in the file manager.  
+![Kali file manager with ETL file](screenshot/kali_file_manager.png)
 
-![ETL file folder view](screenshots/etl_file_folder_view.png)  
-Workspace organization for conversion tasks and captured artefacts.
+Interaction showing retrieval of the ETL from the victim to the analyst host.  
+![Downloading ETL file via Meterpreter](screenshot/meterpreter_file_download.png)
 
-![Downloading etl2pcapng tool](screenshots/etl2pcapng_download.png)  
-Utility used to convert ETL traces to PCAPNG format for Wireshark analysis.
+Workspace organization for conversion tasks and captured artefacts.  
+![ETL file folder view](screenshot/etl_file_folder_view.png)
 
-![Converting ETL to PCAPNG file](screenshots/etl_to_pcap_conversion.png)  
-Conversion output confirming frames were written to the PCAPNG file.
+Utility used to convert ETL traces to PCAPNG format for Wireshark analysis.  
+![Downloading etl2pcapng tool](screenshot/etl2pcapng_download.png)
 
-![ETL file transfer between systems](screenshots/etl_file_transfer.png)  
-Movement of capture files between hosts; monitor and restrict cross-segment transfers.
+Conversion output confirming frames were written to the PCAPNG file.  
+![Converting ETL to PCAPNG file](screenshot/etl_to_pcap_conversion.png)
 
-![PCAPNG file successfully created](screenshots/etl2pcapng_download.png)  
-Confirmation that the conversion tool is present; the resulting PCAPNG should be validated and scanned.
+Movement of capture files between hosts; monitor and restrict cross-segment transfers.  
+![ETL file transfer between systems](screenshot/etl_file_transfer.png)
 
-![Wireshark captured HTTP requests](screenshots/wireshark_http_requests.png)  
-Filtered list of HTTP requests used to quickly identify POSTs and form submissions.
+Filtered list of HTTP requests used to quickly identify POSTs and form submissions.  
+![Wireshark captured HTTP requests](screenshot/wireshark_http_requests.png)
 
-![HTTP POST form with credentials](screenshots/wireshark_http_post_credentials.png)  
-Captured HTTP POST body containing application credentials in the lab capture. This shows why TLS and secure session handling are essential.
+Captured HTTP POST body containing application credentials in the lab capture. This shows why TLS and secure session handling are essential.  
+![HTTP POST form with credentials](screenshot/wireshark_http_post_credentials.png)
 
 ---
 
@@ -182,3 +186,4 @@ Captured HTTP POST body containing application credentials in the lab capture. T
 For questions or collaboration, please reach out.
 
 Created by Mahamed Maki Saine – Cybersecurity | Ethical Hacker | AI Learner
+
